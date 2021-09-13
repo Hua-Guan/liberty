@@ -5,6 +5,7 @@ import sprite.kirisame.kirisame
 import sprite.background.background
 from init import initMainPlayer
 from init import initMusic
+from init import initMouse
 
 
 def main():
@@ -30,8 +31,8 @@ def main():
             if event.type == pygame.QUIT:
                 return False
 
+        initMouse.init_mouse()
         # initMainPlayer.init(main_player)
-
 
         # group.update()
         # group.draw(screen)
