@@ -4,15 +4,18 @@ import pygame
 import sprite.kirisame.kirisame
 import sprite.background.background
 from init import initMainPlayer
+from init import initMusic
 
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode([800, 600])
 
+    initMusic.init_bg_music()
+
     background = sprite.background.background.Background()
-    backgroundGroup = pygame.sprite.Group()
-    backgroundGroup.add(background)
+    background_group = pygame.sprite.Group()
+    background_group.add(background)
 
     main_player = sprite.kirisame.kirisame.Kirisame()
     group = pygame.sprite.Group()
@@ -33,8 +36,8 @@ def main():
         # group.update()
         # group.draw(screen)
 
-        backgroundGroup.update()
-        backgroundGroup.draw(screen)
+        background_group.update()
+        background_group.draw(screen)
 
         pygame.display.update()
 
