@@ -18,7 +18,7 @@ class Kirisame(pygame.sprite.Sprite):
         self.state = None
         #################
         self.vx = 100
-        self.vy = 300
+        self.vy = 375
         self.v = 10
         self.g = 100
         #################

@@ -13,3 +13,4 @@ def init_mouse():
             if index == 0 and 320 < mouse_x < 420 and 420 < mouse_y < 470:
                 # 按下停止音乐
                 pygame.mixer.music.stop()
+                return 'start_game'

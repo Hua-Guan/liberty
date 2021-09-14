@@ -6,9 +6,14 @@ import sprite.background.background
 from init import initMainPlayer
 from init import initMusic
 from init import initMouse
-
+# 定义状态量
+state = None
 
 def main():
+    # 定义状态量
+    global state
+    state = None
+    ##############
     pygame.init()
     screen = pygame.display.set_mode([800, 600])
 
@@ -22,6 +27,9 @@ def main():
     group = pygame.sprite.Group()
     group.add(main_player)
 
+    bg_1 = pygame.image.load('resource/background/bg_1.png')
+    bg_1_sc = pygame.transform.scale(bg_1, (800, 600))
+
     clock = pygame.time.Clock()
     while True:
         # 设置帧率
@@ -31,14 +39,16 @@ def main():
             if event.type == pygame.QUIT:
                 return False
 
-        initMouse.init_mouse()
-        # initMainPlayer.init(main_player)
-
-        # group.update()
-        # group.draw(screen)
-
-        background_group.update()
-        background_group.draw(screen)
+        if state == None:
+            state = initMouse.init_mouse()
+            # 绘制
+            background_group.update()
+            background_group.draw(screen)
+        if state == 'start_game':
+            initMainPlayer.init(main_player)
+            screen.blit(bg_1_sc, (0, 0))
+            group.update()
+            group.draw(screen)
 
         pygame.display.update()
 
